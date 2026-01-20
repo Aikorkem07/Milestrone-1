@@ -5,3 +5,4 @@ public class EventCancelledException extends RuntimeException {
         super("Event cancelled");
     }
 }
+//second commit
