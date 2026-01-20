@@ -1,44 +1,60 @@
 package repositories.impl;
 
 import db.IDB;
-import java.sql.*;
-import repositories.TicketRepository;
+import entities.Seat;
+import repositories.SeatRepository;
 
-public class TicketRepositoryImpl implements TicketRepository {
+import java.sql.*;
+import java.util.*;
+
+public class SeatRepositoryImpl implements SeatRepository {
 
     private IDB db;
 
-    public TicketRepositoryImpl(IDB db) {
+    public SeatRepositoryImpl(IDB db) {
         this.db = db;
     }
 
-    @Override
-    public void create(int eventId, int seatId, int customerId, String code) {
+    public boolean isBooked(int seatId) {
         try (Connection c = db.getConnection()) {
-            PreparedStatement ps = c.prepareStatement(
-                    "INSERT INTO tickets(event_id, seat_id, customer_id, ticket_code) VALUES (?,?,?,?)"
-            );
-            ps.setInt(1, eventId);
-            ps.setInt(2, seatId);
-            ps.setInt(3, customerId);
-            ps.setString(4, code);
-            ps.execute();
-        } catch (SQLException e) {
+            PreparedStatement ps =
+                    c.prepareStatement("select booked from seats where id=?");
+            ps.setInt(1, seatId);
+            ResultSet rs = ps.executeQuery();
+            return rs.next() && rs.getBoolean("booked");
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    @Override
-    public boolean exists(String code) {
+    public void book(int seatId) {
         try (Connection c = db.getConnection()) {
-            PreparedStatement ps = c.prepareStatement(
-                    "SELECT 1 FROM tickets WHERE ticket_code=?"
-            );
-            ps.setString(1, code);
-            ResultSet rs = ps.executeQuery();
-            return rs.next();
-        } catch (SQLException e) {
+            PreparedStatement ps =
+                    c.prepareStatement("update seats set booked=true where id=?");
+            ps.setInt(1, seatId);
+            ps.execute();
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public List<Seat> findByEvent(int eventId) {
+        List<Seat> list = new ArrayList<>();
+        try (Connection c = db.getConnection()) {
+            PreparedStatement ps =
+                    c.prepareStatement("select * from seats where event_id=?");
+            ps.setInt(1, eventId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Seat s = new Seat();
+                s.id = rs.getInt("id");
+                s.seatNumber = rs.getString("seat_number");
+                s.booked = rs.getBoolean("booked");
+                list.add(s);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return list;
     }
 }
