@@ -1,5 +1,6 @@
 package services;
 
+import exceptions.SeatAlreadyBookedException;
 import repositories.SeatRepository;
 
 public class SeatAllocationService {
