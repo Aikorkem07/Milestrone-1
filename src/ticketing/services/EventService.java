@@ -1,27 +1,34 @@
 package ticketing.services;
 
+import ticketing.data.IDB;
 import ticketing.entities.Event;
-import ticketing.repositories.EventRepository;
-import ticketing.exceptions.EventCancelledException;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.time.LocalDateTime;
 
 public class EventService {
 
-    private final EventRepository eventRepository;
+    private final IDB db;
 
-    public EventService(EventRepository eventRepository) {
-        this.eventRepository = eventRepository;
+    public EventService(IDB db) {
+        this.db = db;
     }
 
     public void createEvent(String name, LocalDateTime date) {
-        Event event = new Event(0, name, date, false);
-        eventRepository.add(event);
-        System.out.println("Event created successfully");
-    }
+        String sql = "INSERT INTO events(name, event_date, cancelled) VALUES (?, ?, false)";
 
-    public void checkEventCancelled(int eventId) {
-        Event event = eventRepository.findById(eventId);
-        if (event.isCancelled()) throw new EventCancelledException();
+        try (Connection con = db.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setString(1, name);
+            ps.setObject(2, date); // напрямую LocalDateTime
+            ps.execute();
+
+            System.out.println("Event created successfully.");
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
