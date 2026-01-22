@@ -13,13 +13,15 @@ public class PostgresDB implements IDB {
 
     private static final String PASSWORD =
             "Aikosha.2007";
-
     @Override
     public Connection getConnection() {
         try {
-            return DriverManager.getConnection(URL, USER, PASSWORD);
+            Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
+            System.out.println("Connected to Supabase ");
+            return con;
         } catch (Exception e) {
-            throw new RuntimeException("Failed to connect to database", e);
+            System.out.println("Failed to connect to Supabase");
+            throw new RuntimeException(e);
         }
     }
 }
