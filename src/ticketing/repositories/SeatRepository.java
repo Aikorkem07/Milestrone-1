@@ -1,5 +1,11 @@
 package ticketing.repositories;
 
+import ticketing.entities.Seat;
+import java.util.List;
+
 public interface SeatRepository {
-    boolean isSeatBooked(int seatId);
+    void reserveSeat(int seatId);
+    List<Seat> getAllSeats();
+    List<Seat> getAvailableSeats();
+    List<Seat> getReservedSeats();
 }
