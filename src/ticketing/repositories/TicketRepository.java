@@ -1,5 +1,10 @@
 package ticketing.repositories;
 
+import ticketing.entities.Ticket;
+import java.util.List;
+
 public interface TicketRepository {
-    boolean existsByCode(String code);
+    void validateTicket(String code);
+    List<Ticket> getAllTickets();
+    List<Ticket> getUsedTickets();
 }
