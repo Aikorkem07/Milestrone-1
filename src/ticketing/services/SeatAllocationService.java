@@ -1,43 +1,20 @@
 package ticketing.services;
 
-import ticketing.entities.Seat;
+import ticketing.exceptions.SeatAlreadyBookedException;
 import ticketing.repositories.SeatRepository;
-
-import java.util.List;
 
 public class SeatAllocationService {
 
-    private final SeatRepository seatRepo;
+    private final SeatRepository seatRepository;
 
-    public SeatAllocationService(SeatRepository seatRepo) {
-        this.seatRepo = seatRepo;
+    public SeatAllocationService(SeatRepository seatRepository) {
+        this.seatRepository = seatRepository;
     }
 
     public void reserveSeat(int seatId) {
-        seatRepo.reserveSeat(seatId);
-    }
-
-    public void showAvailableSeats() {
-        List<Seat> seats = seatRepo.getAvailableSeats();
-        System.out.println("Available seats:");
-        for (Seat s : seats) {
-            System.out.println(s);
+        if (seatRepository.isSeatBooked(seatId)) {
+            throw new SeatAlreadyBookedException();
         }
-    }
-
-    public void showReservedSeats() {
-        List<Seat> seats = seatRepo.getReservedSeats();
-        System.out.println("Reserved seats:");
-        for (Seat s : seats) {
-            System.out.println(s);
-        }
-    }
-
-    public void showAllSeats() {
-        List<Seat> seats = seatRepo.getAllSeats();
-        System.out.println("All seats:");
-        for (Seat s : seats) {
-            System.out.println(s);
-        }
+        System.out.println("Seat reserved successfully");
     }
 }
