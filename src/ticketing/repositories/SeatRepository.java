@@ -4,8 +4,8 @@ import ticketing.entities.Seat;
 import java.util.List;
 
 public interface SeatRepository {
-    void reserveSeat(int seatId);
-    List<Seat> getAllSeats();
-    List<Seat> getAvailableSeats();
-    List<Seat> getReservedSeats();
+    void create(int eventId, String seatNumber);
+    List<Seat> findByEvent(int eventId);
+    Seat findById(int seatId);
+    void markBooked(int seatId);
 }

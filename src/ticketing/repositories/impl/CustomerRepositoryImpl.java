@@ -2,7 +2,6 @@ package ticketing.repositories.impl;
 
 import ticketing.data.IDB;
 import ticketing.entities.Customer;
-import ticketing.repositories.CustomerRepository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

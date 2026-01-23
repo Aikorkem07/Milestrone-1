@@ -1,8 +1,9 @@
 package ticketing.repositories;
 
 import ticketing.entities.Event;
+import java.util.List;
 
 public interface EventRepository {
-    void add(Event event);
-    Event findById(int id);
+    void create(Event event);
+    List<Event> findAll();
 }
