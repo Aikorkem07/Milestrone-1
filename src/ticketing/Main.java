@@ -1,11 +1,12 @@
 package ticketing;
 
 import ticketing.data.PostgresDB;
-import ticketing.entities.Customer;
-import ticketing.services.*;
+import ticketing.entities.Event;
+import ticketing.repositories.*;
 import ticketing.repositories.impl.*;
+import ticketing.services.*;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
@@ -13,61 +14,77 @@ public class Main {
 
         var db = new PostgresDB();
 
-        // Сервисы
-        var eventService = new EventService(db); // напрямую без репозитория
-        var seatService = new SeatAllocationService(new SeatRepositoryImpl(db));
-        var customerRepo = new CustomerRepositoryImpl(db);
-        var ticketService = new TicketService(new TicketRepositoryImpl(db));
+        EventRepository eventRepo = new EventRepositoryImpl(db);
+        SeatRepository seatRepo = new SeatRepositoryImpl(db);
+        TicketRepository ticketRepo = new TicketRepositoryImpl(db);
+
+        SeatAllocationService seatService = new SeatAllocationService(seatRepo);
+        TicketService ticketService = new TicketService(ticketRepo);
 
         Scanner sc = new Scanner(System.in);
 
         while (true) {
             System.out.println("""
-                    1. Create event
-                    2. Reserve seat
-                    3. Buy ticket
-                    4. Validate ticket
-                    0. Exit
-                    """);
+            ===== EVENT TICKETING SYSTEM =====
+            1. Create event
+            2. View events
+            3. Create seats for event
+            4. View seating layout
+            5. Reserve seat
+            6. Buy ticket
+            0. Exit
+            """);
 
             int choice = sc.nextInt();
-            sc.nextLine(); // consume newline
+            sc.nextLine();
 
             try {
                 switch (choice) {
                     case 1 -> {
                         System.out.print("Event name: ");
                         String name = sc.nextLine();
-                        System.out.print("Event date (YYYY-MM-DDTHH:MM): ");
-                        String dateStr = sc.nextLine();
-                        LocalDateTime date = LocalDateTime.parse(dateStr);
-
-                        eventService.createEvent(name, date);
+                        eventRepo.create(new Event(0, name, LocalDate.now(), false));
+                        System.out.println("Event created");
                     }
-                    case 2 -> seatService.reserveSeat(1); // пример, резервируем сиденье с id=1
+                    case 2 -> eventRepo.findAll()
+                            .forEach(e -> System.out.println(e.id + " " + e.name));
                     case 3 -> {
-                        System.out.print("Customer name: ");
-                        String name = sc.nextLine();
-                        System.out.print("Customer email: ");
-                        String email = sc.nextLine();
-                        Customer customer = new Customer(name, email);
-                        customerRepo.add(customer);
-
-                        ticketService.buyTicket(customer);
+                        System.out.print("Event ID: ");
+                        int eventId = sc.nextInt();
+                        System.out.print("Seats count: ");
+                        int count = sc.nextInt();
+                        for (int i = 1; i <= count; i++) {
+                            seatRepo.create(eventId, "A" + i);
+                        }
+                        System.out.println("Seats created");
                     }
                     case 4 -> {
-                        System.out.print("Ticket code: ");
-                        String code = sc.nextLine();
-                        ticketService.validateTicket(code);
+                        System.out.print("Event ID: ");
+                        int id = sc.nextInt();
+                        seatRepo.findByEvent(id)
+                                .forEach(s ->
+                                        System.out.println(
+                                                s.seatNumber + " " +
+                                                        (s.booked ? "BOOKED" : "FREE")));
                     }
-                    case 0 -> {
-                        System.out.println("Exiting...");
-                        return;
+                    case 5 -> {
+                        System.out.print("Seat ID: ");
+                        seatService.reserveSeat(sc.nextInt());
+                        System.out.println("Seat reserved");
                     }
-                    default -> System.out.println("Invalid choice!");
+                    case 6 -> {
+                        System.out.print("Name: ");
+                        String n = sc.nextLine();
+                        System.out.print("Email: ");
+                        String e = sc.nextLine();
+                        System.out.print("Seat ID: ");
+                        ticketService.buyTicket(sc.nextInt(), n, e);
+                        System.out.println("Ticket bought");
+                    }
+                    case 0 -> System.exit(0);
                 }
-            } catch (Exception e) {
-                System.out.println("Error: " + e.getMessage());
+            } catch (Exception ex) {
+                System.out.println("Error: " + ex.getMessage());
             }
         }
     }
