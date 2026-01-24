@@ -1,3 +1,4 @@
+package ticketing.entities;
 public class Seat {
     public int id;
     public int eventId;
