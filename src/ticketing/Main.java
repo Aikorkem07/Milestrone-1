@@ -19,12 +19,7 @@ public class Main {
     public static void main(String[] args) {
 
         PostgresDB db = new PostgresDB();
-        try (Connection c = db.getConnection()) {
-            System.out.println("Connected to Supabase");
-        } catch (Exception e) {
-            System.out.println("Supabase connection failed");
-            return;
-        }
+        
 
 
         EventRepository eventRepo = new EventRepositoryImpl(db);
