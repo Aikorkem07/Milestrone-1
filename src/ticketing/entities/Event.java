@@ -1,7 +1,5 @@
 package ticketing.entities;
-
 import java.time.LocalDate;
-
 public class Event {
     public int id;
     public String name;
