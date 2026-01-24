@@ -19,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
 
         PostgresDB db = new PostgresDB();
-        
+
 
 
         EventRepository eventRepo = new EventRepositoryImpl(db);
@@ -100,7 +100,7 @@ public class Main {
                     }
 
                     case 0 -> {
-                        System.out.println("Bye 👋");
+                        System.out.println("Bye");
                         System.exit(0);
                     }
 
