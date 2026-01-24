@@ -1,15 +1,13 @@
 package ticketing.entities;
 
 public class Customer {
-    private int id;
-    private String fullName;
-    private String email;
+    public int id;
+    public String name;
+    public String email;
 
-    public Customer(String fullName, String email) {
-        this.fullName = fullName;
+    public Customer(int id, String name, String email) {
+        this.id = id;
+        this.name = name;
         this.email = email;
     }
-
-    public String getFullName() { return fullName; }
-    public String getEmail() { return email; }
 }

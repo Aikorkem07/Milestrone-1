@@ -1,15 +1,15 @@
 package ticketing.entities;
 
 public class Ticket {
-    private int id;
-    private String ticketCode;
+    public int id;
+    public int seatId;
+    public int customerId;
+    public String code;
 
-    public Ticket(int id, String ticketCode) {
+    public Ticket(int id, int seatId, int customerId, String code) {
         this.id = id;
-        this.ticketCode = ticketCode;
-    }
-
-    public String getTicketCode() {
-        return ticketCode;
+        this.seatId = seatId;
+        this.customerId = customerId;
+        this.code = code;
     }
 }
