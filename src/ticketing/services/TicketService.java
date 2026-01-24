@@ -1,20 +1,16 @@
 package ticketing.services;
 
-import ticketing.exceptions.InvalidTicketException;
 import ticketing.repositories.TicketRepository;
 
 public class TicketService {
 
-    private final TicketRepository ticketRepository;
+    private final TicketRepository repo;
 
-    public TicketService(TicketRepository ticketRepository) {
-        this.ticketRepository = ticketRepository;
+    public TicketService(TicketRepository repo) {
+        this.repo = repo;
     }
 
-    public void validateTicket(String code) {
-        if (!ticketRepository.existsByCode(code)) {
-            throw new InvalidTicketException();
-        }
-        System.out.println("Ticket is valid");
+    public void buyTicket(int seatId, String name, String email) {
+        repo.buyTicket(seatId, name, email);
     }
 }

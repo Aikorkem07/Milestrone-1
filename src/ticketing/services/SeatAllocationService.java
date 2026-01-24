@@ -1,20 +1,22 @@
 package ticketing.services;
 
+import ticketing.entities.Seat;
 import ticketing.exceptions.SeatAlreadyBookedException;
 import ticketing.repositories.SeatRepository;
 
 public class SeatAllocationService {
 
-    private final SeatRepository seatRepository;
+    private final SeatRepository seatRepo;
 
-    public SeatAllocationService(SeatRepository seatRepository) {
-        this.seatRepository = seatRepository;
+    public SeatAllocationService(SeatRepository seatRepo) {
+        this.seatRepo = seatRepo;
     }
 
     public void reserveSeat(int seatId) {
-        if (seatRepository.isSeatBooked(seatId)) {
+        Seat seat = seatRepo.findById(seatId);
+        if (seat.booked) {
             throw new SeatAlreadyBookedException();
         }
-        System.out.println("Seat reserved successfully");
+        seatRepo.markBooked(seatId);
     }
 }
