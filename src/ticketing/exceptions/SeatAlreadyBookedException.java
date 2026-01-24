@@ -2,4 +2,6 @@ package ticketing.exceptions;
 
 public class SeatAlreadyBookedException extends RuntimeException {
     public SeatAlreadyBookedException() {
-        super("Seat already booked")}
+        super("Seat already booked");
+    }
+}
