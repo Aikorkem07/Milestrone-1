@@ -1,13 +1,14 @@
 package ticketing.entities;
 
 public class Customer {
-    public int id;
-    public String name;
-    public String email;
+    private String name;
+    private String type; // "VIP", "Student", "Regular" и т.д.
 
-    public Customer(int id, String name, String email) {
-        this.id = id;
+    public Customer(String name, String type) {
         this.name = name;
-        this.email = email;
+        this.type = type;
     }
+
+    public String getName() { return name; }
+    public String getType() { return type; }
 }

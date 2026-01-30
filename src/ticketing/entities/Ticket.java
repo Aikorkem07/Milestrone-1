@@ -1,15 +1,15 @@
 package ticketing.entities;
 
-public class Ticket {
-    public int id;
-    public int seatId;
-    public int customerId;
-    public String code;
+public abstract class Ticket {
+    protected int seatNumber;
+    protected double price;
 
-    public Ticket(int id, int seatId, int customerId, String code) {
-        this.id = id;
-        this.seatId = seatId;
-        this.customerId = customerId;
-        this.code = code;
+    public Ticket(int seatNumber, double price) {
+        this.seatNumber = seatNumber;
+        this.price = price;
     }
+
+    public int getSeatNumber() { return seatNumber; }
+    public double getPrice() { return price; }
+    public abstract String getType();
 }

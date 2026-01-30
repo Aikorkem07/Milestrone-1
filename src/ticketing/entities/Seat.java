@@ -1,14 +1,14 @@
 package ticketing.entities;
 public class Seat {
-    public int id;
-    public int eventId;
-    public String seatNumber;
-    public boolean booked;
+    private int number;
+    private boolean booked;
 
-    public Seat(int id, int eventId, String seatNumber, boolean booked) {
-        this.id = id;
-        this.eventId = eventId;
-        this.seatNumber = seatNumber;
-        this.booked = booked;
+    public Seat(int number) {
+        this.number = number;
+        this.booked = false;
     }
+
+    public int getNumber() { return number; }
+    public boolean isAvailable() { return !booked; }
+    public void book() { this.booked = true; }
 }
