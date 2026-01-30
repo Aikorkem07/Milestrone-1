@@ -1,5 +1,4 @@
 package ticketing;
-
 import ticketing.data.PostgresDB;
 import ticketing.entities.Event;
 import ticketing.repositories.EventRepository;
@@ -10,11 +9,9 @@ import ticketing.repositories.impl.SeatRepositoryImpl;
 import ticketing.repositories.impl.TicketRepositoryImpl;
 import ticketing.services.SeatAllocationService;
 import ticketing.services.TicketService;
-
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
 
