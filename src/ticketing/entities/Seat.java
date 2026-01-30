@@ -1,4 +1,5 @@
 package ticketing.entities;
+
 public class Seat {
     private int number;
     private boolean booked;
