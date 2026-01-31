@@ -14,6 +14,7 @@ public class Event {
         this.schedule = builder.schedule;
         this.totalSeats = builder.totalSeats;
     }
+
     public String getTitle() { return title; }
     public String getVenue() { return venue; }
     public LocalDateTime getSchedule() { return schedule; }

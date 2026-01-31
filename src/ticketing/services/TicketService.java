@@ -1,16 +1,17 @@
 package ticketing.services;
 
-import ticketing.repositories.TicketRepository;
+import ticketing.entities.Ticket;
+import ticketing.factories.TicketFactory;
+import ticketing.utils.DiscountManager;
 
 public class TicketService {
 
-    private final TicketRepository repo;
+    // Покупка билета
+    public Ticket buyTicket(String type, int seatNumber, double price, String customerType) {
+        // Singleton для управления скидками
+        double finalPrice = DiscountManager.getInstance().applyDiscount(price, customerType);
 
-    public TicketService(TicketRepository repo) {
-        this.repo = repo;
-    }
-
-    public void buyTicket(int seatId, String name, String email) {
-        repo.buyTicket(seatId, name, email);
+        // Factory для создания нужного типа билета
+        return TicketFactory.createTicket(type, seatNumber, finalPrice);
     }
 }
