@@ -1,7 +1,8 @@
 package ticketing.exceptions;
 
 public class EventCancelledException extends RuntimeException {
-    public EventCancelledException() {
-        super("Event is cancelled");
+
+    public EventCancelledException(String eventTitle) {
+        super("Event '" + eventTitle + "' is cancelled.");
     }
 }
