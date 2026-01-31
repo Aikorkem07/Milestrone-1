@@ -7,9 +7,8 @@ import ticketing.repositories.TicketRepository;
 import ticketing.repositories.impl.EventRepositoryImpl;
 import ticketing.repositories.impl.SeatRepositoryImpl;
 import ticketing.repositories.impl.TicketRepositoryImpl;
-import ticketing.services.SeatAllocationService;
 import ticketing.services.TicketService;
-import java.sql.Connection;
+
 import java.time.LocalDate;
 import java.util.Scanner;
 public class Main {
