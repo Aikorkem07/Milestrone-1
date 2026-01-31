@@ -20,7 +20,7 @@ public class Event {
     public LocalDateTime getSchedule() { return schedule; }
     public int getTotalSeats() { return totalSeats; }
 
-k
+    // Builder pattern для создания Event
     public static class Builder {
         private String title;
         private String venue;
