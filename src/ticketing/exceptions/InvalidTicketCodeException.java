@@ -1,7 +1,8 @@
 package ticketing.exceptions;
+
 public class InvalidTicketCodeException extends RuntimeException {
-    public InvalidTicketCodeException() {
-        super("Invalid ticket code");
+
+    public InvalidTicketCodeException(String code) {
+        super("Invalid ticket code: " + code);
     }
 }
-//
