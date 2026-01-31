@@ -21,7 +21,16 @@ public class Main {
     public static void main(String[] args) {
 
         PostgresDB db = new PostgresDB();
-        Connection connection = db.getConnection();
+
+        try (Connection connection = db.getConnection()) {
+            if (connection != null && !connection.isClosed()) {
+                System.out.println("Connected to Supabase");
+            }
+        } catch (Exception e) {
+            System.out.println("Failed to connect to Supabase");
+            e.printStackTrace();
+            return;
+        }
 
         EventRepository eventRepo = new EventRepositoryImpl();
         SeatRepository seatRepo = new SeatRepositoryImpl();
@@ -34,7 +43,7 @@ public class Main {
         boolean exit = false;
 
         while (!exit) {
-            System.out.println("\n=== Event Ticketing Menu ===");
+            System.out.println("\nEvent Ticketing Menu:");
             System.out.println("1. Create Event");
             System.out.println("2. View Events");
             System.out.println("3. View Available Seats");
