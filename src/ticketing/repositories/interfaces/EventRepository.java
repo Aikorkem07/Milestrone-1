@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface EventRepository {
-    void save(Event event);                     // Сохранение события
-    Optional<Event> findByTitle(String title); // Поиск события по названию
-    List<Event> findAll();                      // Получение всех событий
+    void save(Event event);
+    Optional<Event> findByTitle(String title);
+    List<Event> findAll();
 }

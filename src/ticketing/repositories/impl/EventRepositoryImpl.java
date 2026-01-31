@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class EventRepositoryImpl implements EventRepository {
+
     private final List<Event> events = new ArrayList<>();
 
     @Override
