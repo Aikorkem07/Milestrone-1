@@ -27,7 +27,6 @@ public class PostgresDB implements IDB {
             throw new RuntimeException("Failed to load DB config", e);
         }
     }
-
     @Override
     public Connection getConnection() {
         try {
