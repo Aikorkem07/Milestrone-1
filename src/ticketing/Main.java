@@ -2,11 +2,8 @@ package ticketing;
 import ticketing.data.PostgresDB;
 import ticketing.entities.Event;
 import ticketing.repositories.EventRepository;
-import ticketing.repositories.SeatRepository;
-import ticketing.repositories.TicketRepository;
 import ticketing.repositories.impl.EventRepositoryImpl;
 import ticketing.repositories.impl.SeatRepositoryImpl;
-import ticketing.repositories.impl.TicketRepositoryImpl;
 import ticketing.services.TicketService;
 
 import java.time.LocalDate;
