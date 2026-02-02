@@ -8,7 +8,6 @@ public class TicketService {
 
 
     public Ticket buyTicket(String type, int seatNumber, double price, String customerType) {
-        // Singleton для управления скидками
         double finalPrice = DiscountManager.getInstance().applyDiscount(price, customerType);
 
 
