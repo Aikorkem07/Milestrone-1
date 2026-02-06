@@ -29,5 +29,4 @@ bin/
 ### Mac OS ###
 .DS_Store
 # Ignore database config
-config.properties
-
+resources/config.properties

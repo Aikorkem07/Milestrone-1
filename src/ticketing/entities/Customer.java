@@ -2,7 +2,7 @@ package ticketing.entities;
 
 public class Customer {
     private String name;
-    private String type; // "VIP", "Student", "Regular" и т.д.
+    private String type; // "VIP", "Student", "Regular"
 
     public Customer(String name, String type) {
         this.name = name;
