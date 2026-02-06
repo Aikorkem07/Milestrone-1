@@ -1,4 +1,4 @@
-package ticketing.components.reporting;
+package ticketing.components;
 
 import java.util.List;
 
