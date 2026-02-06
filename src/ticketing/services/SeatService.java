@@ -16,7 +16,7 @@ public class SeatService {
 
     public List<Seat> getAvailableSeats() {
         return seats.stream()
-                .filter(Seat::isAvailable) // Lambda для фильтрации
+                .filter(Seat::isAvailable)
                 .collect(Collectors.toList());
     }
 
