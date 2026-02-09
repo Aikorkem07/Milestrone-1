@@ -1,4 +1,4 @@
-package ticketing.utils;
+package ticketing.ReportingComponent;
 
 public class DiscountManager {
     private static DiscountManager instance;

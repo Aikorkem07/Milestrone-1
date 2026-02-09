@@ -1,4 +1,4 @@
-package ticketing.exceptions;
+package ticketing.TicketSalesComponent;
 
 public class InvalidTicketCodeException extends RuntimeException {
 

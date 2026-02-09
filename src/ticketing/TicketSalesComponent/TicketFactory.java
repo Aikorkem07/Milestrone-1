@@ -1,6 +1,4 @@
-package ticketing.factories;
-
-import ticketing.entities.*;
+package ticketing.TicketSalesComponent;
 
 public class TicketFactory {
 

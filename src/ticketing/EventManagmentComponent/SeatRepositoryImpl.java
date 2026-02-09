@@ -1,7 +1,4 @@
-package ticketing.repositories.impl;
-
-import ticketing.entities.Seat;
-import ticketing.repositories.interfaces.SeatRepository;
+package ticketing.EventManagmentComponent;
 
 import java.util.ArrayList;
 import java.util.List;

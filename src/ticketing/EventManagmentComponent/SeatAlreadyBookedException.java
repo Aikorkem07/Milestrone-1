@@ -1,4 +1,4 @@
-package ticketing.exceptions;
+package ticketing.EventManagmentComponent;
 
 public class SeatAlreadyBookedException extends RuntimeException {
 

@@ -1,7 +1,4 @@
-package ticketing.repositories.impl;
-
-import ticketing.entities.Event;
-import ticketing.repositories.interfaces.EventRepository;
+package ticketing.EventManagmentComponent;
 
 import java.util.ArrayList;
 import java.util.List;

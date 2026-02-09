@@ -1,4 +1,4 @@
-package ticketing.entities;
+package ticketing.EventManagmentComponent;
 
 import java.time.LocalDateTime;
 

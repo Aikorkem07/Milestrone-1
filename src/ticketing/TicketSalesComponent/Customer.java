@@ -1,4 +1,4 @@
-package ticketing.entities;
+package ticketing.TicketSalesComponent;
 
 public class Customer {
     private String name;

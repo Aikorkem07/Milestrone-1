@@ -1,6 +1,4 @@
-package ticketing.services;
-
-import ticketing.entities.Seat;
+package ticketing.EventManagmentComponent;
 
 import java.util.List;
 import java.util.function.Predicate;

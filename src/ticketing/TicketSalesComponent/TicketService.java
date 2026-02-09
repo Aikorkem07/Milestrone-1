@@ -1,8 +1,6 @@
-package ticketing.services;
+package ticketing.TicketSalesComponent;
 
-import ticketing.entities.Ticket;
-import ticketing.factories.TicketFactory;
-import ticketing.utils.DiscountManager;
+import ticketing.ReportingComponent.DiscountManager;
 
 public class TicketService {
 

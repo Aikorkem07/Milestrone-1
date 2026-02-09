@@ -1,6 +1,5 @@
-package ticketing.repositories.interfaces;
+package ticketing.EventManagmentComponent;
 
-import ticketing.entities.Seat;
 import java.util.List;
 
 public interface SeatRepository {

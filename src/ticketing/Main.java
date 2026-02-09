@@ -1,15 +1,17 @@
 package ticketing;
 
+
+import ticketing.TicketSalesComponent.Ticket;
 import ticketing.data.PostgresDB;
-import ticketing.entities.*;
-import ticketing.exceptions.SeatAlreadyBookedException;
-import ticketing.repositories.impl.EventRepositoryImpl;
-import ticketing.repositories.impl.SeatRepositoryImpl;
-import ticketing.repositories.interfaces.EventRepository;
-import ticketing.repositories.interfaces.SeatRepository;
-import ticketing.services.EventService;
-import ticketing.services.SeatService;
-import ticketing.services.TicketService;
+import ticketing.EventManagmentComponent.*;
+import ticketing.EventManagmentComponent.SeatAlreadyBookedException;
+import ticketing.EventManagmentComponent.EventRepositoryImpl;
+import ticketing.EventManagmentComponent.SeatRepositoryImpl;
+import ticketing.EventManagmentComponent.EventRepository;
+import ticketing.EventManagmentComponent.SeatRepository;
+import ticketing.EventManagmentComponent.EventService;
+import ticketing.EventManagmentComponent.SeatService;
+import ticketing.TicketSalesComponent.TicketService;
 
 import java.sql.Connection;
 import java.time.LocalDateTime;

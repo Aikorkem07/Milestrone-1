@@ -1,4 +1,4 @@
-package ticketing.entities;
+package ticketing.TicketSalesComponent;
 
 public class StandardTicket extends Ticket {
     public StandardTicket(int seatNumber, double price) {

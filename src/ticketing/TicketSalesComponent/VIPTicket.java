@@ -1,4 +1,4 @@
-package ticketing.entities;
+package ticketing.TicketSalesComponent;
 
 public class VIPTicket extends Ticket {
     public VIPTicket(int seatNumber, double price) {

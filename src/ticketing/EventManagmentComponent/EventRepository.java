@@ -1,6 +1,5 @@
-package ticketing.repositories.interfaces;
+package ticketing.EventManagmentComponent;
 
-import ticketing.entities.Event;
 import java.util.List;
 import java.util.Optional;
 

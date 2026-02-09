@@ -1,4 +1,4 @@
-package ticketing.entities;
+package ticketing.TicketSalesComponent;
 
 public abstract class Ticket {
     protected int seatNumber;
