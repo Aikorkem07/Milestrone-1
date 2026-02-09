@@ -1,4 +1,4 @@
-package ticketing.EventManagmentComponent;
+package ticketing.EVENTManagmentComponent;
 
 import java.util.List;
 import java.util.Optional;

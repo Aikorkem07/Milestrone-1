@@ -1,4 +1,4 @@
-package ticketing.EventManagmentComponent;
+package ticketing.EVENTManagmentComponent;
 
 public class Seat {
     private int number;
